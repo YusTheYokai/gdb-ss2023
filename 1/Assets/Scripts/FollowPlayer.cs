@@ -1,20 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
-public class FollowPlayer : MonoBehaviour {
+public abstract class FollowPlayer : MonoBehaviour {
 
     public GameObject player;
 
-    private Vector3 offset = new(0, 5, -7);
+    private Vector3 offset;
 
-    // Start is called before the first frame update
-    void Start() {
+    // /////////////////////////////////////////////////////////////////////////
+    // Init
+    // /////////////////////////////////////////////////////////////////////////
 
+    public FollowPlayer(Vector3 offset) {
+        this.offset = offset;
     }
 
-    // Update is called once per frame
-    void LateUpdate() {
+    // /////////////////////////////////////////////////////////////////////////
+    // Methods
+    // /////////////////////////////////////////////////////////////////////////
+
+    public virtual void LateUpdate() {
         transform.position = player.transform.position + offset;
     }
 }
