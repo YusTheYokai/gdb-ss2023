@@ -26,7 +26,7 @@ public class SpawnManagerX : MonoBehaviour
         Vector3 spawnPos = new Vector3(Random.Range(spawnLimitXLeft, spawnLimitXRight), spawnPosY, 0);
 
         // instantiate ball at random spawn location
-        Instantiate(ballPrefabs[0], spawnPos, ballPrefabs[0].transform.rotation);
+        Instantiate(ballPrefabs[Random.Range(0, ballPrefabs.Length)], spawnPos, ballPrefabs[0].transform.rotation);
     }
 
 }
