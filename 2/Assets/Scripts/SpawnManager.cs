@@ -4,19 +4,24 @@ public class SpawnManager : MonoBehaviour {
 
     public GameObject[] animalPrefabs;
 
+    private readonly float startDelay = 2.0f;
+    private readonly float spawnInterval = 1.5f;
+
     // /////////////////////////////////////////////////////////////////////////
     // Methods
     // /////////////////////////////////////////////////////////////////////////
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.S)) {
-            // select random animal
-            int animalIndex = Random.Range(0, animalPrefabs.Length);
+    void Start() {
+        InvokeRepeating("SpawnRandomAnimal", startDelay, spawnInterval);
+    }
 
-            // select random x coordinate
-            int x = Random.Range(-20, 21);
+    private void SpawnRandomAnimal() {
+        // select random animal
+        int animalIndex = Random.Range(0, animalPrefabs.Length);
 
-            Instantiate(animalPrefabs[animalIndex], new Vector3(x, 0, 25), animalPrefabs[animalIndex].transform.rotation);
-        }
+        // select random x coordinate
+        int x = Random.Range(-15, 16);
+
+        Instantiate(animalPrefabs[animalIndex], new Vector3(x, 0, 25), animalPrefabs[animalIndex].transform.rotation);
     }
 }
