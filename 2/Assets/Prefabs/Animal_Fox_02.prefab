@@ -435,6 +435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topBound: 30
   lowerBound: -10
+  gameManager: {fileID: 0}
 --- !u!65 &-8183775017375201223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -460,6 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a1209575c9ad634c9279e73ef8a67db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
 --- !u!1 &2767537182864704150
 GameObject:
   m_ObjectHideFlags: 0
