@@ -16,26 +16,28 @@ public class PlayerControllerX : MonoBehaviour
     private AudioSource playerAudio;
     public AudioClip moneySound;
     public AudioClip explodeSound;
+    public AudioClip bounceSound;
 
 
     // Start is called before the first frame update
     void Start()
     {
         Physics.gravity *= gravityModifier;
+        playerRb = GetComponent<Rigidbody>();
         playerAudio = GetComponent<AudioSource>();
-
-        // Apply a small upward force at the start of the game
-        playerRb.AddForce(Vector3.up * 5, ForceMode.Impulse);
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         // While space is pressed and player is low enough, float up
-        if (Input.GetKey(KeyCode.Space) && !gameOver)
-        {
+        if (Input.GetKey(KeyCode.Space) && !gameOver && transform.position.y < 14) {
             playerRb.AddForce(Vector3.up * floatForce);
+        }
+
+        if (transform.position.y > 14) {
+            playerRb.AddForce(Vector3.down * floatForce / 25.0f, ForceMode.Impulse);
+        } else if (transform.position.y < 2) {
+            playerRb.AddForce(Vector3.up * floatForce / 25.0f, ForceMode.Impulse);
+            playerAudio.PlayOneShot(bounceSound, 0.05f);
         }
     }
 
@@ -45,7 +47,7 @@ public class PlayerControllerX : MonoBehaviour
         if (other.gameObject.CompareTag("Bomb"))
         {
             explosionParticle.Play();
-            playerAudio.PlayOneShot(explodeSound, 1.0f);
+            playerAudio.PlayOneShot(explodeSound, 0.05f);
             gameOver = true;
             Debug.Log("Game Over!");
             Destroy(other.gameObject);
@@ -55,7 +57,7 @@ public class PlayerControllerX : MonoBehaviour
         else if (other.gameObject.CompareTag("Money"))
         {
             fireworksParticle.Play();
-            playerAudio.PlayOneShot(moneySound, 1.0f);
+            playerAudio.PlayOneShot(moneySound, 0.05f);
             Destroy(other.gameObject);
 
         }
