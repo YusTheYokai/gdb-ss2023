@@ -705,7 +705,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95d6e360479c424593f43d3363cbc2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 571111433006038902, guid: e32226d98606ac04f8ff753e8977b5c0, type: 3}
+  obstaclePrefabs:
+  - {fileID: 571111433006038902, guid: e32226d98606ac04f8ff753e8977b5c0, type: 3}
+  - {fileID: 4600656465888713831, guid: 0cf8b7e79209381449da60e9a51583b3, type: 3}
+  - {fileID: 6339569200190031000, guid: b4820feef6e722c4ababc79fd3987edc, type: 3}
+  - {fileID: 8371919116770123881, guid: a9091fba6d4001d42b584cbdf93470a0, type: 3}
 --- !u!1001 &1483630821
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -813,7 +817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa4c8f97205b2743aa8ff78e45848d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 14
+  jumpForce: 16
   gravityModifier: 4.5
   explosionParticle: {fileID: 2104025514}
   dirtParticle: {fileID: 707855593}
