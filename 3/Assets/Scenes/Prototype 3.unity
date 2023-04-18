@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c4eecda56399a4489a2a4de899ec99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 15
 --- !u!65 &835818924
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1778,6 +1778,7 @@ MonoBehaviour:
   - {fileID: 4600656465888713831, guid: 0cf8b7e79209381449da60e9a51583b3, type: 3}
   - {fileID: 6339569200190031000, guid: b4820feef6e722c4ababc79fd3987edc, type: 3}
   - {fileID: 8371919116770123881, guid: a9091fba6d4001d42b584cbdf93470a0, type: 3}
+  - {fileID: 54742232829218789, guid: 8f99d6c12c2cb7440afaa4b5cb39f2e1, type: 3}
 --- !u!1001 &1483630821
 PrefabInstance:
   m_ObjectHideFlags: 0

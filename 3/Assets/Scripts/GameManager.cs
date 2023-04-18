@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour {
         finalScoreText.text += scoreText.text;
         gameOverlay.gameObject.SetActive(false);
         gameOverMenu.gameObject.SetActive(true);
-        Invoke("ResetGame", 3.0f);
+        Invoke("ResetGame", 5.0f);
     }
 
     private void ResetGame() {

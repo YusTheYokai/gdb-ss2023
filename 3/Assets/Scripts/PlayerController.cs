@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour {
 
     private float startTime;
     private bool onGround = true;
+    private bool canDoubleJump = true;
     public bool GameOver { get; private set; } = false;
 
     // /////////////////////////////////////////////////////////////////////////
@@ -41,7 +43,11 @@ public class PlayerController : MonoBehaviour {
         }
 
         anim.SetBool("Run_b", true);
-        if (Input.GetKeyDown(KeyCode.Space) && onGround && !GameOver) {
+        if (Input.GetKeyDown(KeyCode.Space) && (onGround || canDoubleJump) && !GameOver) {
+            if (!onGround) {
+                canDoubleJump = false;
+            }
+
             onGround = false;
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             anim.SetTrigger("Jump_trig");
@@ -57,6 +63,7 @@ public class PlayerController : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("Ground")) {
             onGround = true;
+            canDoubleJump = true;
             dirtParticle.Play();
         } else if (collision.gameObject.CompareTag("Obstacle")) {
             GameOver = true;
