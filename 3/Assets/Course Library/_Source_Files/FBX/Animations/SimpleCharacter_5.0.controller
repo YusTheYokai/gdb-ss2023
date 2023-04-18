@@ -117,6 +117,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: Run_b
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Movement
@@ -2105,9 +2111,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 4
-    m_ConditionEvent: Speed_f
-    m_EventTreshold: 0.5
+  - m_ConditionMode: 2
+    m_ConditionEvent: Run_b
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110250891}
   m_Solo: 0
@@ -5244,9 +5250,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: Speed_f
-    m_EventTreshold: 0.5
+  - m_ConditionMode: 1
+    m_ConditionEvent: Run_b
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110246782}
   m_Solo: 0
@@ -6995,7 +7001,7 @@ AnimatorState:
 --- !u!1102 &110246782
 AnimatorState:
   serializedVersion: 6
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -7101,7 +7107,7 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: Speed_f
 --- !u!1102 &110253591
 AnimatorState:
   serializedVersion: 6
@@ -8285,10 +8291,10 @@ AnimatorStateMachine:
     m_Position: {x: 144, y: -48, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110250891}
-    m_Position: {x: -336, y: -192, z: 0}
+    m_Position: {x: -340, y: -190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110246782}
-    m_Position: {x: -336, y: -48, z: 0}
+    m_Position: {x: -340, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110264428}
     m_Position: {x: -108, y: -456, z: 0}
@@ -8301,7 +8307,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 110246782}
+  m_DefaultState: {fileID: 110250891}
 --- !u!1107 &110700004
 AnimatorStateMachine:
   serializedVersion: 6

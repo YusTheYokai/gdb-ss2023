@@ -5,7 +5,6 @@ public class SpawnManager : MonoBehaviour {
     public GameObject obstaclePrefab;
 
     private PlayerController playerController;
-    private readonly float startDelay = 2;
     private readonly float repeatRate = 2;
     private readonly Vector3 spawnPos = new(25, 0, 0);
 
@@ -16,7 +15,7 @@ public class SpawnManager : MonoBehaviour {
 
     void Start() {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        InvokeRepeating("SpawnObstacle", startDelay, repeatRate);
+        InvokeRepeating("SpawnObstacle", GameManager.INTRO_TIME, repeatRate);
     }
 
     private void SpawnObstacle() {

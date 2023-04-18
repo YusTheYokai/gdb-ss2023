@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     private Animator anim;
     private AudioSource audioSource;
 
+    private float startTime;
     private bool onGround = true;
     public bool GameOver { get; private set; } = false;
 
@@ -28,9 +29,16 @@ public class PlayerController : MonoBehaviour {
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         Physics.gravity *= gravityModifier;
+        startTime = Time.time;
     }
 
     void Update() {
+        if (Time.time - startTime < GameManager.INTRO_TIME) {
+            transform.Translate(Vector3.forward * (3.0f / GameManager.INTRO_TIME) * Time.deltaTime);
+            return;
+        }
+
+        anim.SetBool("Run_b", true);
         if (Input.GetKeyDown(KeyCode.Space) && onGround && !GameOver) {
             onGround = false;
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -51,7 +59,6 @@ public class PlayerController : MonoBehaviour {
             anim.SetBool("Death_b", true);
             anim.SetInteger("DeathType_int", 1);
             audioSource.PlayOneShot(crashSound, 0.05f);
-            Debug.Log("Game Over!");
         }
     }
 }
