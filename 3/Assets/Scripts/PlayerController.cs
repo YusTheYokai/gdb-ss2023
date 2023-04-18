@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
         if (Time.time - startTime < GameManager.INTRO_TIME) {
-            transform.Translate(Vector3.forward * (3.0f / GameManager.INTRO_TIME) * Time.deltaTime);
+            transform.Translate(Vector3.forward * (GameManager.CHARACTER_INTO_MOVE_DISTANCE / GameManager.INTRO_TIME) * Time.deltaTime);
             return;
         }
 
