@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour {
 
     public AudioClip jumpSound;
     public AudioClip crashSound;
+
+    public TextMeshProUGUI scoreText;
 
     private Rigidbody rb;
     private Animator anim;
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-        Physics.gravity *= gravityModifier;
+        Physics.gravity = new Vector3(0, -9.81f, 0) * gravityModifier;
         startTime = Time.time;
     }
 
@@ -46,6 +48,10 @@ public class PlayerController : MonoBehaviour {
             dirtParticle.Stop();
             audioSource.PlayOneShot(jumpSound, 0.05f);
         }
+
+        if (!GameOver) {
+            scoreText.text = (float.Parse(scoreText.text) + (Time.time - startTime - GameManager.INTRO_TIME) * Time.deltaTime * 100).ToString("0");
+        }
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -59,6 +65,7 @@ public class PlayerController : MonoBehaviour {
             anim.SetBool("Death_b", true);
             anim.SetInteger("DeathType_int", 1);
             audioSource.PlayOneShot(crashSound, 0.05f);
+            GameObject.Find("GameManager").GetComponent<GameManager>().GameOver();
         }
     }
 }

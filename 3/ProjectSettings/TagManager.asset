@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Obstacle
+  - Money
+  - Bomb
+  - Background
   layers:
   - Default
   - TransparentFX
@@ -42,4 +45,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Panel
+    uniqueID: 2055250511
+    locked: 0
+  - name: Text
+    uniqueID: 1701143019
     locked: 0
