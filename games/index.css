@@ -1,0 +1,33 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #eeeeee;
+    color: #eeeeee;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    text-align: center;
+    width: 27vw;
+    background-color: #9e8fb2;
+    background-image: linear-gradient(315deg, #9e8fb2 0%, #a7acd9 74%);
+    border-radius: 10px;
+    transition: 0.25s;
+}
+
+.card:hover {
+    /* add cool box shadow */
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+    /* transform: scale(1.05); */
+}
+
+.card > img {
+    width: 90%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
