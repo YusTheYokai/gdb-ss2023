@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour {
-    
+
     public GameObject enemyPrefab;
     private readonly float spawnRange = 9;
 
