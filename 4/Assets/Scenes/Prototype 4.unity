@@ -322,6 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8781907491029703786, guid: 660c8bd9508fb09469b83f07fdff2785, type: 3}
+  heavierEnemyPrefab: {fileID: 7097290757863838070, guid: edd00058f3109464c8d93438781a3b04, type: 3}
   powerupPrefab: {fileID: 6436141581449439654, guid: 5393ddc34d4304049991e1359d93d436, type: 3}
 --- !u!1 &843083595
 GameObject:
