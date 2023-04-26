@@ -4,7 +4,7 @@ public class SpawnManager : MonoBehaviour {
 
     public GameObject enemyPrefab;
     public GameObject heavierEnemyPrefab;
-    public GameObject powerupPrefab;
+    public GameObject[] powerupPrefabs;
     private int waveNumber = 1;
     private readonly float spawnRange = 9;
 
@@ -14,7 +14,8 @@ public class SpawnManager : MonoBehaviour {
 
     void Update() {
         if (FindObjectsOfType<Enemy>().Length == 0) {
-            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+            var prefab = powerupPrefabs[Random.Range(0, powerupPrefabs.Length)];
+            Instantiate(prefab, GenerateSpawnPosition(), prefab.transform.rotation);
             SpawnEnemyWave(waveNumber++);
         }
     }
