@@ -49,6 +49,10 @@ public class PlayerController : MonoBehaviour {
                 jumped = true;
             }
         }
+
+        if (transform.position.y < -10) {
+            FindObjectOfType<GameManager>().gameOver = true;
+        }
     }
 
     private void ShootRocket() {
