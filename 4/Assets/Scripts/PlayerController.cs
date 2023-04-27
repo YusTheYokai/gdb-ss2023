@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour {
         } else if (collidingObject.CompareTag("Ground")) {
             GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(enemy => {
                 var distance = Vector3.Distance(enemy.transform.position, transform.position);
-                var direction = (enemy.transform.position - transform.position).normalized;
+                var direction = (transform.position - enemy.transform.position).normalized;
                 var force = direction * (collision.impulse.y * 2 / distance);
                 force.y = 10;
                 enemy.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
