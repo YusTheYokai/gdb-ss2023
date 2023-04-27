@@ -8,6 +8,7 @@ TagManager:
   - Rocket Powerup
   - Bounce Powerup
   - Powerup
+  - Ground
   layers:
   - Default
   - TransparentFX

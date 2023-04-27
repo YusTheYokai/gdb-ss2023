@@ -1,6 +1,11 @@
+using System.Linq;
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using System.Numerics;
+using Vector3 = UnityEngine.Vector3;
+using UnityEditor;
 
 public class PlayerController : MonoBehaviour {
 
@@ -10,6 +15,8 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody rb;
     private GameObject focalPoint;
 
+
+    private bool jumped = false;
 
     private bool bouncePowerup = false;
     private readonly float bouncePowerupStrength = 15.0f;
@@ -34,6 +41,13 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.LeftShift) && rocketCount > 0) {
             ShootRocket();
             HidePowerupIndicatorIfNoPowerups();
+        } else if (Input.GetKeyDown(KeyCode.Space)) {
+            if (jumped) {
+                rb.AddForce(Vector3.down * 20, ForceMode.Impulse);
+            } else {
+                rb.AddForce(Vector3.up * 10, ForceMode.Impulse);
+                jumped = true;
+            }
         }
     }
 
@@ -61,6 +75,15 @@ public class PlayerController : MonoBehaviour {
             Rigidbody enemyRb = collidingObject.GetComponent<Rigidbody>();
             Vector3 awayFromPlayer = collidingObject.transform.position - transform.position;
             enemyRb.AddForce(awayFromPlayer * bouncePowerupStrength, ForceMode.Impulse);
+        } else if (collidingObject.CompareTag("Ground")) {
+            GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(enemy => {
+                var distance = Vector3.Distance(enemy.transform.position, transform.position);
+                var direction = (enemy.transform.position - transform.position).normalized;
+                var force = direction * (collision.impulse.y * 2 / distance);
+                force.y = 10;
+                enemy.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+            });
+            jumped = false;
         }
     }
 
