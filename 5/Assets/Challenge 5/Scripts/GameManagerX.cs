@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameManagerX : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timerText;
     public TextMeshProUGUI gameOverText;
     public GameObject titleScreen;
     public Button restartButton; 
@@ -28,6 +29,7 @@ public class GameManagerX : MonoBehaviour
         spawnRate /= difficulty;
         isGameActive = true;
         StartCoroutine(SpawnTarget());
+        StartCoroutine(Timer());
         score = 0;
         UpdateScore(0);
         titleScreen.SetActive(false);
@@ -47,6 +49,20 @@ public class GameManagerX : MonoBehaviour
             }
             
         }
+    }
+
+    IEnumerator Timer()
+    {
+        int second = 60;
+        timerText.text = "Time: " + second.ToString();
+        while (second > 0 && isGameActive)
+        {
+            yield return new WaitForSeconds(1);
+            second--;
+            timerText.text = "Time: " + second.ToString();
+        }
+
+        GameOver();
     }
 
     // Generate a random spawn position based on a random index from 0 to 3
