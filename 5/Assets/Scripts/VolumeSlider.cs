@@ -1,20 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DifficultyButton : MonoBehaviour {
-
-    public int difficulty;
-
+public class VolumeSlider : MonoBehaviour {
+    
     private GameManager _gameManager;
-    private Button _button;
+    private Slider _slider;
 
     // /////////////////////////////////////////////////////////////////////////
     // Methods
     // /////////////////////////////////////////////////////////////////////////
-    
+
     void Start() {
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        _button = GetComponent<Button>();
-        _button.onClick.AddListener(() => _gameManager.StartGame(difficulty));
+        _slider = GetComponent<Slider>();
+        _slider.onValueChanged.AddListener(volume => _gameManager.ChangeVolumn(volume));
     }
 }

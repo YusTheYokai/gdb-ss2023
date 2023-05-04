@@ -16,35 +16,45 @@ public class GameManager : MonoBehaviour {
 
     public bool gameActive;
 
-    private float spawnRate = 1.0f;
-    private int lives;
-    private int score;
+    private float _spawnRate = 1.0f;
+    private int _lives;
+    private int _score;
+
+    private AudioSource _musicAudioSource;
 
     // /////////////////////////////////////////////////////////////////////////
     // Methods
     // /////////////////////////////////////////////////////////////////////////
 
+    public void Start() {
+        _musicAudioSource = GetComponent<AudioSource>();
+    }
+
     public void StartGame(int difficulty) {
         gameActive = true;
-        spawnRate /= difficulty;
+        _spawnRate /= difficulty;
         titleScreen.gameObject.SetActive(false);
         StartCoroutine(SpawnTarget());
         UpdateLives(3);
         UpdateScore(0);
     }
 
-    public void UpdateLives(int livesToAdd) {
-        lives += livesToAdd;
-        livesText.text = "Lives: " + lives;
+    public void ChangeVolumn(float volume) {
+        _musicAudioSource.volume = volume;
+    }
 
-        if (lives <= 0) {
+    public void UpdateLives(int livesToAdd) {
+        _lives += livesToAdd;
+        livesText.text = "Lives: " + _lives;
+
+        if (_lives <= 0) {
             GameOver();
         }
     }
 
     public void UpdateScore(int scoreToAdd) {
-        score += scoreToAdd;
-        scoreText.text = "Score: " + score;
+        _score += scoreToAdd;
+        scoreText.text = "Score: " + _score;
     }
 
     public void RestartGame() {
@@ -53,7 +63,7 @@ public class GameManager : MonoBehaviour {
 
     private IEnumerator SpawnTarget() {
         while (gameActive) {
-            yield return new WaitForSeconds(spawnRate);
+            yield return new WaitForSeconds(_spawnRate);
             int index = Random.Range(0, targets.Count);
             Instantiate(targets[index]);
         }
