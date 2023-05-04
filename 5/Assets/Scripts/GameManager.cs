@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI scoreText;
     public GameObject titleScreen;
+    public GameObject pauseMenu;
     public TextMeshProUGUI gameOverText;
     public Button restartButton;
 
@@ -28,6 +29,15 @@ public class GameManager : MonoBehaviour {
 
     public void Start() {
         _musicAudioSource = GetComponent<AudioSource>();
+    }
+
+    public void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape) && gameActive) {
+            bool pause = Time.timeScale == 1.0f;
+
+            Time.timeScale = pause ? 0.0f : 1.0f;
+            pauseMenu.gameObject.SetActive(pause);
+        }
     }
 
     public void StartGame(int difficulty) {
