@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     public List<GameObject> targets;
+    public AudioClip explosionSound;
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI scoreText;
     public GameObject titleScreen;
@@ -21,14 +22,14 @@ public class GameManager : MonoBehaviour {
     private int _lives;
     private int _score;
 
-    private AudioSource _musicAudioSource;
+    private AudioSource _audioSource;
 
     // /////////////////////////////////////////////////////////////////////////
     // Methods
     // /////////////////////////////////////////////////////////////////////////
 
     public void Start() {
-        _musicAudioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void Update() {
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ChangeVolumn(float volume) {
-        _musicAudioSource.volume = volume;
+        _audioSource.volume = volume;
     }
 
     public void UpdateLives(int livesToAdd) {
@@ -65,6 +66,10 @@ public class GameManager : MonoBehaviour {
     public void UpdateScore(int scoreToAdd) {
         _score += scoreToAdd;
         scoreText.text = "Score: " + _score;
+    }
+
+    public void PlayTargetExplosionEffect() {
+        _audioSource.PlayOneShot(explosionSound, 1.0f);
     }
 
     public void RestartGame() {

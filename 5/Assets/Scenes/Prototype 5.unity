@@ -173,6 +173,7 @@ MonoBehaviour:
   - {fileID: 3607288025188575715, guid: a217d37a69d88bc4aad1f21a634a2aee, type: 3}
   - {fileID: 1824620580748380116, guid: 6f00b25bcafd62e438deded8a3cc4551, type: 3}
   - {fileID: 2007522930594608678, guid: 01d27f028bc5c744199be74ffa672961, type: 3}
+  explosionSound: {fileID: 8300000, guid: f92d8cde30b417145b59850c72a95a53, type: 3}
   livesText: {fileID: 682968064}
   scoreText: {fileID: 1739348386}
   titleScreen: {fileID: 1300358620}

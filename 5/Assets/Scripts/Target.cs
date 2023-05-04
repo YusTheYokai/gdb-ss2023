@@ -42,6 +42,7 @@ public class Target : MonoBehaviour {
         if (_gameManager.gameActive) {
             Destroy(gameObject);
             Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+            _gameManager.PlayTargetExplosionEffect();
             _gameManager.UpdateScore(pointValue);
         }
     }
